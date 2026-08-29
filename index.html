@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Marcos Gabriel — Desenvolvedor Python especializado em sistemas web com Flask e Django, desktop com PyQt5 e bancos de dados. Experiência em Manaus, AM.">
+  <meta name="description" content="Marcos Gabriel — Desenvolvedor Full Stack especializado em Python (Flask, Django), frontend com React, Vue, Bootstrap, HTML/CSS, desktop com PyQt5 e bancos de dados. Experiência em Manaus, AM.">
   <meta name="theme-color" content="#0a0e1a">
-  <title>Marcos Gabriel — Dev Python · Web · Desktop</title>
+  <title>Marcos Gabriel — Full Stack Dev · Web · Desktop</title>
   <link rel="icon" type="image/x-icon" href="static/favicon.ico">
   <style>
     :root {
@@ -74,6 +74,13 @@
     html, body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote { margin: 0; padding: 0; }
     ul, ol { list-style: none; }
     a { color: inherit; text-decoration: none; }
+    a:focus-visible,
+    .hamburger:focus-visible,
+    .back-to-top:focus-visible {
+      outline: 2px dashed var(--fg);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
     button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
     input, textarea, select { font: inherit; color: inherit; }
 
@@ -111,8 +118,8 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
+      transform: translateY(16px);
+      transition: opacity 1.0s var(--ease-soft), transform 1.0s var(--ease-soft);
     }
     .reveal.visible {
       opacity: 1;
@@ -237,6 +244,14 @@
       font-weight: 540;
       letter-spacing: -0.018em;
     }
+    .brand-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
     .nav-links {
       display: none;
       gap: var(--space-6);
@@ -248,7 +263,15 @@
       transition: color var(--motion-fast) var(--ease-standard);
       position: relative;
     }
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
     .nav-links a:hover { color: var(--fg); }
+    .nav-links a.active {
+      color: var(--fg);
+      border-bottom-color: var(--accent);
+    }
     .nav-cta { display: none; }
     @media (min-width: 768px) {
       .nav-links { display: flex; }
@@ -368,18 +391,6 @@
       background: radial-gradient(circle, rgba(40, 175, 255, 0.7) 0%, rgba(40, 175, 255, 0) 65%);
       animation: orb-2 27s ease-in-out infinite;
     }
-    .hero-orb-3 {
-      width: 360px; height: 360px;
-      bottom: -8%; left: 32%;
-      background: radial-gradient(circle, rgba(120, 80, 220, 0.55) 0%, rgba(120, 80, 220, 0) 65%);
-      animation: orb-3 19s ease-in-out infinite;
-    }
-    .hero-orb-4 {
-      width: 280px; height: 280px;
-      top: 28%; left: 44%;
-      background: radial-gradient(circle, rgba(80, 200, 255, 0.45) 0%, rgba(80, 200, 255, 0) 65%);
-      animation: orb-4 24s ease-in-out infinite;
-    }
     @keyframes orb-1 {
       0%, 100% { transform: translate(0, 0) scale(1); }
       33% { transform: translate(80px, 40px) scale(1.08); }
@@ -388,16 +399,6 @@
     @keyframes orb-2 {
       0%, 100% { transform: translate(0, 0) scale(1); }
       50% { transform: translate(-90px, -70px) scale(1.12); }
-    }
-    @keyframes orb-3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(60px, -50px) scale(1.1); }
-      75% { transform: translate(-50px, 40px) scale(0.92); }
-    }
-    @keyframes orb-4 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      40% { transform: translate(-60px, 30px) scale(1.05); }
-      80% { transform: translate(50px, -40px) scale(0.96); }
     }
     .hero-particles {
       position: absolute;
@@ -462,44 +463,9 @@
       flex-wrap: wrap;
       gap: 0.18em;
     }
-    .glitch {
-      position: relative;
+    .hero-title-word {
       display: inline-block;
       color: var(--fg);
-    }
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      opacity: 0.85;
-    }
-    .glitch::before {
-      color: rgba(58, 130, 255, 0.95);
-      animation: glitch-1 6s steps(1) infinite;
-      clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
-    }
-    .glitch::after {
-      color: rgba(80, 220, 255, 0.9);
-      animation: glitch-2 6s steps(1) infinite;
-      clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
-    }
-    @keyframes glitch-1 {
-      0%, 88%, 100% { transform: translate(0, 0); }
-      90%  { transform: translate(-3px, 1px); }
-      92%  { transform: translate(2px, -1px); }
-      94%  { transform: translate(-1px, 2px); }
-      96%  { transform: translate(2px, 0); }
-    }
-    @keyframes glitch-2 {
-      0%, 88%, 100% { transform: translate(0, 0); }
-      90%  { transform: translate(3px, -1px); }
-      92%  { transform: translate(-2px, 1px); }
-      94%  { transform: translate(1px, -2px); }
-      96%  { transform: translate(-2px, 0); }
     }
     .hero-subtitle {
       font-size: clamp(18px, 2.1vw, 24px);
@@ -513,6 +479,30 @@
     .hero-subtitle strong {
       color: var(--fg);
       font-weight: 540;
+    }
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      margin: calc(-1 * var(--space-3)) 0 var(--space-6);
+    }
+    .hero-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: var(--space-6);
+      transform: translateX(-50%);
+      z-index: 10;
+      display: inline-flex;
+      color: var(--muted);
+      animation: scroll-bob 2.4s ease-in-out infinite;
+      transition: color var(--motion-base) var(--ease-standard);
+    }
+    .hero-scroll:hover { color: var(--fg); }
+    @keyframes scroll-bob {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 6px); }
     }
     .hero-ctas {
       display: flex;
@@ -606,7 +596,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-3);
     }
-    @media (min-width: 640px) { .stack-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 640px) { .stack-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (min-width: 1024px) { .stack-grid { grid-template-columns: repeat(4, 1fr); } }
     .stack-card {
       padding: var(--space-5) var(--space-4);
@@ -634,6 +624,29 @@
     }
     .stack-card:active { transform: scale(0.97); }
     .stack-card:hover::before { opacity: 1; }
+    .stack-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+    .stack-icon {
+      display: inline-flex;
+    }
+    .stack-icon svg { display: block; }
+    .stack-cat {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--accent);
+      border: 1px solid rgba(79, 142, 255, 0.3);
+      background: rgba(79, 142, 255, 0.07);
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
     .stack-name {
       font-family: var(--font-display);
       font-size: var(--text-lg);
@@ -648,27 +661,20 @@
       letter-spacing: 0.4px;
       color: var(--muted);
     }
-    .stack-bar-wrap {
-      height: 4px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-pill);
+    .stack-dots {
+      display: flex;
+      gap: 6px;
       margin-top: var(--space-3);
-      overflow: hidden;
     }
-    .stack-bar {
-      height: 100%;
-      border-radius: var(--radius-pill);
+    .stack-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+    .stack-dot.filled {
       background: var(--accent);
-      transition: width 0.8s var(--ease-soft);
-    }
-    .stack-level {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      color: var(--meta);
-      margin-top: 6px;
-      display: block;
+      border-color: var(--accent);
     }
 
     .projects-grid {
@@ -703,6 +709,7 @@
       border-color: rgba(255, 255, 255, 0.28);
       background: rgba(255, 255, 255, 0.045);
       transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(79, 142, 255, 0.2);
     }
     .project-card:active { transform: scale(0.98); }
     .project-card:hover::after { opacity: 1; }
@@ -730,8 +737,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: auto;
-      padding-top: var(--space-3);
+      padding-top: var(--space-2);
     }
     .project-tag {
       font-family: var(--font-mono);
@@ -739,9 +745,9 @@
       text-transform: uppercase;
       letter-spacing: 0.4px;
       padding: 4px 10px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(79, 142, 255, 0.3);
       border-radius: var(--radius-pill);
-      color: var(--muted);
+      color: var(--accent);
     }
     .project-tag-private {
       border-color: rgba(234, 179, 8, 0.4);
@@ -750,17 +756,37 @@
     }
     .project-image {
       width: 100%;
-      height: 160px;
+      height: 120px;
       object-fit: cover;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       margin-bottom: var(--space-2);
     }
+    .project-image-placeholder {
+      width: 100%;
+      height: 120px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border);
+      margin-bottom: var(--space-2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--meta);
+    }
+    .project-image-placeholder svg { opacity: 0.7; }
     .project-links {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
-      margin-top: var(--space-2);
+      margin-top: auto;
+      padding-top: var(--space-3);
     }
     .project-link {
       display: inline-flex;
@@ -775,6 +801,14 @@
       transition: color var(--motion-fast) var(--ease-standard);
     }
     .project-link:hover { color: #7baeff; }
+    .project-link-consult {
+      color: var(--muted);
+      cursor: default;
+    }
+    .project-link-consult:hover {
+      color: var(--muted);
+    }
+    .project-link-consult svg { display: none; }
     .project-link svg {
       transition: transform var(--motion-base) var(--ease-standard);
     }
@@ -807,11 +841,18 @@
       width: 12px; height: 12px;
       border-radius: 50%;
       background: var(--bg);
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      border: 2px solid var(--border);
       transition: all var(--motion-base) var(--ease-standard);
+    }
+    .timeline-item.current {
+      border-left: 2px solid var(--accent);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(90deg, rgba(79, 142, 255, 0.06) 0%, transparent 60%);
+      padding-left: var(--space-4);
     }
     .timeline-item.current::before {
       background: var(--accent);
+      border-color: var(--accent);
       border-color: var(--accent);
       box-shadow: 0 0 0 4px rgba(79, 142, 255, 0.22);
     }
@@ -851,9 +892,6 @@
     }
     @media (min-width: 1024px) {
       .contact-grid { grid-template-columns: 1.15fr 1fr; gap: var(--space-16); }
-    }
-    .contact-links-only {
-      max-width: 480px;
     }
     .contact-links {
       display: flex;
@@ -932,6 +970,62 @@
       transform: translate(2px, -2px);
     }
 
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .contact-field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .contact-field label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--muted);
+    }
+    .contact-field input,
+    .contact-field textarea {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 340;
+      letter-spacing: -0.005em;
+      color: var(--fg);
+      transition: border-color var(--motion-base) var(--ease-standard), background var(--motion-base) var(--ease-standard);
+    }
+    .contact-field textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .contact-field input::placeholder,
+    .contact-field textarea::placeholder {
+      color: var(--meta);
+    }
+    .contact-field input:hover,
+    .contact-field textarea:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .contact-field input:focus-visible,
+    .contact-field textarea:focus-visible {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.32);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .contact-form-status {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      min-height: 1em;
+      margin: 0;
+    }
+
     .footer {
       padding: var(--space-12) 0 var(--space-16);
       border-top: 1px solid var(--border-soft);
@@ -1006,6 +1100,45 @@
       transform: translateY(-1px);
     }
 
+    .back-to-top {
+      position: fixed;
+      right: var(--gutter-phone);
+      bottom: var(--space-5);
+      z-index: 90;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--fg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition:
+        opacity var(--motion-base) var(--ease-standard),
+        transform var(--motion-base) var(--ease-standard),
+        background var(--motion-base) var(--ease-standard);
+    }
+    @media (min-width: 768px) { .back-to-top { right: var(--gutter-tablet); } }
+    @media (min-width: 1024px) { .back-to-top { right: var(--gutter-desktop); } }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.32);
+      transform: translateY(-2px);
+    }
+    .back-to-top.visible:hover {
+      transform: translateY(-2px);
+    }
+
     /* ── Mobile (< 640px) ── */
     @media (max-width: 639px) {
       .hero {
@@ -1016,8 +1149,7 @@
       }
       .hero-orb-1 { width: 260px; height: 260px; top: 4%; left: -18%; }
       .hero-orb-2 { width: 300px; height: 300px; top: 45%; right: -22%; }
-      .hero-orb-3 { width: 200px; height: 200px; bottom: -4%; left: 20%; }
-      .hero-orb-4 { width: 160px; height: 160px; top: 30%; left: 50%; }
+      .back-to-top { bottom: 60px; }
 
       .hero-title {
         font-size: clamp(36px, 12vw, 56px);
@@ -1073,9 +1205,6 @@
       .stack-name {
         font-size: 16px;
       }
-      .stack-bar-wrap {
-        margin-top: var(--space-2);
-      }
 
       .projects-grid {
         grid-template-columns: 1fr;
@@ -1103,9 +1232,6 @@
         font-size: 14px;
       }
 
-      .contact-links-only {
-        max-width: 100%;
-      }
       .contact-link {
         padding: var(--space-3) var(--space-4);
       }
@@ -1140,7 +1266,6 @@
       }
       .hero-orb-1 { width: 360px; height: 360px; }
       .hero-orb-2 { width: 420px; height: 420px; }
-      .hero-orb-3 { width: 280px; height: 280px; }
 
       .hero-title {
         font-size: clamp(40px, 8vw, 72px);
@@ -1171,7 +1296,9 @@
 
   <nav class="topnav" aria-label="Navegação principal">
     <div class="container topnav-inner">
-      <a href="#top" class="brand" aria-label="Marcos Gabriel — início">
+      <a href="#top" class="brand">
+        <img src="static/profile-small.webp" alt="Foto de perfil de Marcos Gabriel" class="brand-avatar" width="30" height="30" loading="lazy">
+        <span>Marcos Gabriel</span>
       </a>
       <ul class="nav-links">
         <li><a href="#sobre">Sobre mim</a></li>
@@ -1195,8 +1322,6 @@
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
       <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-4" aria-hidden="true"></div>
       <div class="hero-particles" id="particles" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-content">
@@ -1205,11 +1330,12 @@
             Disponível para novos projetos
           </div>
           <h1 class="hero-title">
-            <span class="glitch" data-text="Marcos">Marcos</span>
-            <span class="glitch" data-text="Gabriel">Gabriel</span>
+            <span class="hero-title-word">Marcos</span>
+            <span class="hero-title-word">Gabriel</span>
           </h1>
+          <p class="hero-role">Desenvolvedor Full Stack</p>
           <p class="hero-subtitle">
-            Desenvolvedor <strong>Python</strong> com experiência em sistemas web (<strong>Flask</strong>, <strong>Django</strong>), desktop (<strong>PyQt5</strong>, <strong>tkinter</strong>) e automação. Foco em <strong>bancos de dados</strong> relacionais e NoSQL para construir soluções completas.
+            Desenvolvedor <strong>Full Stack</strong> com experiência em sistemas web (<strong>Flask</strong>, <strong>Django</strong>), desktop (<strong>PyQt5</strong>, <strong>tkinter</strong>) e automação. Foco em <strong>bancos de dados</strong> relacionais e NoSQL para construir soluções completas.
           </p>
           <div class="hero-ctas">
             <a href="#projetos" class="btn btn-primary">Ver projetos</a>
@@ -1222,7 +1348,7 @@
             </div>
             <div class="hero-meta-item">
               <span class="hero-meta-label">Stack</span>
-              <span class="hero-meta-value">Python · Flask · Django · PyQt5</span>
+              <span class="hero-meta-value">Python · Flask · Django · Vue · React · Bootstrap · HTML/CSS · PyQt5</span>
             </div>
             <div class="hero-meta-item">
               <span class="hero-meta-label">Localização</span>
@@ -1231,6 +1357,9 @@
           </div>
         </div>
       </div>
+      <a href="#sobre" class="hero-scroll" aria-label="Rolar para a seção Sobre">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
     </section>
 
     <section id="sobre" class="section-divider" aria-labelledby="sobre-title">
@@ -1241,7 +1370,7 @@
         </div>
         <div class="about-content reveal reveal-delay-1">
           <p class="about-text">
-            Sou <strong>Marcos Gabriel</strong>, desenvolvedor Python apaixonado por criar soluções que resolvem problemas reais. Comecei na área de TI fazendo suporte e automação, mas logo percebi que meu verdadeiro interesse estava em <strong>construir</strong>, não apenas manter.
+            Sou <strong>Marcos Gabriel</strong>, desenvolvedor Full Stack apaixonado por criar soluções que resolvem problemas reais. Comecei na área de TI fazendo suporte e automação, mas logo percebi que meu verdadeiro interesse estava em <strong>construir</strong>, não apenas manter.
           </p>
           <p class="about-text">
             Hoje foco em <strong>sistemas web</strong> com Flask e Django, <strong>aplicativos desktop</strong> com PyQt5, e <strong>integração de bancos de dados</strong> (SQL Server, PostgreSQL, MongoDB). Gosto de transformar processos manuais em sistemas automatizados que fazem a diferença no dia a dia das equipes.
@@ -1272,80 +1401,152 @@
         <div class="section-head reveal">
           <span class="mono-label">02 / Stack</span>
           <h2 id="stack-title">Ferramentas que uso para construir produtos.</h2>
-          <p class="lead">Linguagens, frameworks e bancos de dados com que trabalho no dia a dia — do backend à interface.</p>
+          <p class="lead">Linguagens, frameworks, estilos e bancos de dados com que trabalho no dia a dia — do backend à interface.</p>
         </div>
         <div class="stack-grid reveal reveal-delay-1">
           <div class="stack-card">
-            <div class="stack-name">Python</div>
-            <div class="stack-tag">Linguagem principal</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 95%"></div></div>
-            <span class="stack-level">Avançado</span>
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E34C26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/><path d="M13.5 4l-3 16"/></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
+            <div class="stack-name">HTML</div>
+            <div class="stack-tag">Markup</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
           </div>
           <div class="stack-card">
-            <div class="stack-name">Flask</div>
-            <div class="stack-tag">Micro framework web</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 85%"></div></div>
-            <span class="stack-level">Avançado</span>
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#264DE4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4c-2 0-3 1-3 3v2c0 1.5-1 2.5-2 3 1 .5 2 1.5 2 3v2c0 2 1 3 3 3"/><path d="M16 4c2 0 3 1 3 3v2c0 1.5 1 2.5 2 3-1 .5-2 1.5-2 3v2c0 2-1 3-3 3"/></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
+            <div class="stack-name">CSS</div>
+            <div class="stack-tag">Estilização</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
           </div>
           <div class="stack-card">
-            <div class="stack-name">Django</div>
-            <div class="stack-tag">Framework web full-stack</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 80%"></div></div>
-            <span class="stack-level">Avançado</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">SQL Server</div>
-            <div class="stack-tag">Banco relacional</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 85%"></div></div>
-            <span class="stack-level">Avançado</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">PostgreSQL</div>
-            <div class="stack-tag">Banco relacional</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 80%"></div></div>
-            <span class="stack-level">Avançado</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">MongoDB</div>
-            <div class="stack-tag">Banco NoSQL</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 75%"></div></div>
-            <span class="stack-level">Intermediário</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">PyQt5</div>
-            <div class="stack-tag">Desktop GUI</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 80%"></div></div>
-            <span class="stack-level">Avançado</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">SQL</div>
-            <div class="stack-tag">Consultas e modelagem</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 85%"></div></div>
-            <span class="stack-level">Avançado</span>
-          </div>
-          <div class="stack-card">
-            <div class="stack-name">Git / GitHub</div>
-            <div class="stack-tag">Versionamento</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 75%"></div></div>
-            <span class="stack-level">Intermediário</span>
-          </div>
-          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#F7DF1E"/><text x="12" y="17.5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="11" fill="#111">JS</text></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
             <div class="stack-name">JavaScript</div>
             <div class="stack-tag">Frontend</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 65%"></div></div>
-            <span class="stack-level">Intermediário</span>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
           </div>
           <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3776AB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3h3a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-6a3 3 0 0 0-3 3v2a3 3 0 0 0 3 3h4"/><circle cx="14" cy="6.5" r="0.5" fill="#3776AB" stroke="none"/><circle cx="10" cy="17.5" r="0.5" fill="#3776AB" stroke="none"/></svg></span>
+              <span class="stack-cat">Backend</span>
+            </div>
+            <div class="stack-name">Python</div>
+            <div class="stack-tag">Linguagem principal</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 3h4.2L12 13.3 17.8 3H22L12 21 2 3z" fill="#42B883"/></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
             <div class="stack-name">Vue JS</div>
             <div class="stack-tag">Framework Frontend</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 60%"></div></div>
-            <span class="stack-level">Intermediário</span>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
           </div>
           <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.3"><circle cx="12" cy="12" r="2" fill="#61DAFB" stroke="none"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
+            <div class="stack-name">React</div>
+            <div class="stack-tag">Biblioteca frontend</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="#7953D5"/><text x="12" y="17" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="#fff">B</text></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
+            <div class="stack-name">Bootstrap</div>
+            <div class="stack-tag">CSS Framework</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CC2635" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+              <span class="stack-cat">Database</span>
+            </div>
+            <div class="stack-name">SQL Server</div>
+            <div class="stack-tag">Banco relacional</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#0063A5"/><text x="12" y="16.5" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="10" fill="#fff">PG</text></svg></span>
+              <span class="stack-cat">Database</span>
+            </div>
+            <div class="stack-name">PostgreSQL</div>
+            <div class="stack-tag">Banco relacional</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2c4 3.2 6 6.8 6 10.2 0 3.4-2.4 6.3-6 7.8-3.6-1.5-6-4.4-6-7.8C6 8.8 8 5.2 12 2z" fill="#47A248"/><path d="M12 7v13" stroke="#1e3b25" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+              <span class="stack-cat">Database</span>
+            </div>
+            <div class="stack-name">MongoDB</div>
+            <div class="stack-tag">Banco NoSQL</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 3l9 9-9 9-9-9z" fill="#1E79D2"/><path d="M12 8.5 15.5 12 12 15.5 8.5 12z" fill="#fff" opacity="0.85"/></svg></span>
+              <span class="stack-cat">Desktop</span>
+            </div>
+            <div class="stack-name">PyQt5</div>
+            <div class="stack-tag">Desktop GUI</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F05032" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+              <span class="stack-cat">Tools</span>
+            </div>
+            <div class="stack-name">Git / GitHub</div>
+            <div class="stack-tag">Versionamento</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F29111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
+              <span class="stack-cat">Database</span>
+            </div>
+            <div class="stack-name">SQL</div>
+            <div class="stack-tag">Consultas e modelagem</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#005A99" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4M11 3v6l-5.2 9.1A2 2 0 0 0 7.5 21h9a2 2 0 0 0 1.7-2.9L13 9V3"/><path d="M8.5 15h7"/></svg></span>
+              <span class="stack-cat">Backend</span>
+            </div>
+            <div class="stack-name">Flask</div>
+            <div class="stack-tag">Micro framework web</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2093BC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5.5"/><path d="M15.5 3v16"/><circle cx="19" cy="6.5" r="0.8" fill="#2093BC" stroke="none"/><circle cx="19" cy="10.5" r="0.8" fill="#2093BC" stroke="none"/></svg></span>
+              <span class="stack-cat">Backend</span>
+            </div>
+            <div class="stack-name">Django</div>
+            <div class="stack-tag">Framework web full-stack</div>
+            <div class="stack-dots" role="img" aria-label="Proficiência avançada: 3 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-top">
+              <span class="stack-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="#06B6D4"/><text x="12" y="17" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-weight="700" font-size="13" fill="#fff">t</text></svg></span>
+              <span class="stack-cat">Frontend</span>
+            </div>
             <div class="stack-name">TailwindCSS</div>
             <div class="stack-tag">CSS Framework</div>
-            <div class="stack-bar-wrap"><div class="stack-bar" style="width: 65%"></div></div>
-            <span class="stack-level">Intermediário</span>
+            <div class="stack-dots" role="img" aria-label="Proficiência intermediária: 2 de 4"><span class="stack-dot filled"></span><span class="stack-dot filled"></span><span class="stack-dot"></span><span class="stack-dot"></span></div>
           </div>
         </div>
       </div>
@@ -1356,7 +1557,7 @@
         <div class="section-head reveal">
           <span class="mono-label">03 / Projetos</span>
           <h2 id="projetos-title">O que ando construindo.</h2>
-          <p class="lead">Projetos reais no GitHub — sistemas web, desktop, automação e soluções com Python.</p>
+          <p class="lead">Projetos reais no GitHub — sistemas web, desktop, automação e soluções Full Stack.</p>
         </div>
         <div class="projects-grid reveal reveal-delay-1">
           <article class="project-card">
@@ -1370,8 +1571,15 @@
               <span class="project-tag">JavaScript</span>
               <span class="project-tag project-tag-private">Privado</span>
             </div>
+            <div class="project-links">
+              <a href="https://github.com/HyperTechDevelopment" class="project-link project-link-consult" target="_blank" rel="noopener noreferrer">Disponível sob consulta <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            </div>
           </article>
           <article class="project-card">
+            <div class="project-image-placeholder" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4-4-8 8"/></svg>
+              <span>BusinessAI</span>
+            </div>
             <div class="project-num">02 · IA</div>
             <h3 class="project-name">BusinessAI</h3>
             <p class="project-desc">Agente de consultas dinâmicas com inteligência artificial para análise de dados empresariais. Faça perguntas em linguagem natural e obtenha insights direto dos seus dados.</p>
@@ -1381,8 +1589,15 @@
               <span class="project-tag">Análise</span>
               <span class="project-tag project-tag-private">Privado</span>
             </div>
+            <div class="project-links">
+              <a href="https://github.com/HyperTechDevelopment" class="project-link project-link-consult" target="_blank" rel="noopener noreferrer">Disponível sob consulta <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            </div>
           </article>
           <article class="project-card">
+            <div class="project-image-placeholder" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4-4-8 8"/></svg>
+              <span>IntegraOS</span>
+            </div>
             <div class="project-num">03 · Web</div>
             <h3 class="project-name">IntegraOS</h3>
             <p class="project-desc">Sistema integrado de gestão com backend Python e frontend web. Automatiza processos operacionais, unifica dados de diferentes setores e gera dashboards executive em tempo real.</p>
@@ -1391,6 +1606,9 @@
               <span class="project-tag">Django</span>
               <span class="project-tag">PostgreSQL</span>
               <span class="project-tag project-tag-private">Privado</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/HyperTechDevelopment" class="project-link project-link-consult" target="_blank" rel="noopener noreferrer">Disponível sob consulta <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
             </div>
           </article>
           <article class="project-card">
@@ -1417,7 +1635,9 @@
               <span class="project-tag">Plotly</span>
               <span class="project-tag">Dashboard</span>
             </div>
-            <a href="https://github.com/HyperTechDevelopment/dashboard-clp" class="project-link" target="_blank" rel="noopener noreferrer">Ver no GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            <div class="project-links">
+              <a href="https://github.com/HyperTechDevelopment/dashboard-clp" class="project-link" target="_blank" rel="noopener noreferrer">Ver no GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            </div>
           </article>
           <article class="project-card">
             <img src="demos/clp.png" alt="CLP Controle de Lavagem" class="project-image" loading="lazy">
@@ -1429,7 +1649,9 @@
               <span class="project-tag">Automação</span>
               <span class="project-tag">Indústria</span>
             </div>
-            <a href="https://github.com/HyperTechDevelopment/clp-controle-de-lavagem" class="project-link" target="_blank" rel="noopener noreferrer">Ver no GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            <div class="project-links">
+              <a href="https://github.com/HyperTechDevelopment/clp-controle-de-lavagem" class="project-link" target="_blank" rel="noopener noreferrer">Ver no GitHub <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg></a>
+            </div>
           </article>
         </div>
       </div>
@@ -1444,31 +1666,31 @@
         </div>
         <div class="timeline reveal reveal-delay-1">
           <div class="timeline-item current">
-            <div class="timeline-date">abr 2025 — Atual</div>
+            <div class="timeline-date">Abr 2025 — Atual</div>
             <h3 class="timeline-role">Analista de TI</h3>
             <div class="timeline-company">Estaleiro Juruá · Iranduba, AM · Presencial</div>
             <p class="timeline-desc">Automação de processos com SoftExpert, desenvolvimento de fluxogramas para otimização operacional, e projeto de soluções de software proprietárias para gestão interna e melhoria contínua dos fluxos de trabalho.</p>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">jul 2023 — abr 2025</div>
+            <div class="timeline-date">Jul 2023 — Abr 2025</div>
             <h3 class="timeline-role">Analista de TI Jr</h3>
             <div class="timeline-company">Callidus · Manaus, AM · Presencial</div>
             <p class="timeline-desc">Atendimento HelpDesk, suporte a sistemas ERP, desenvolvimento de aplicações personalizadas para departamentos, manutenção de equipamentos e treinamentos internos para capacitação de colaboradores.</p>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">mai 2022 — jul 2023</div>
+            <div class="timeline-date">Mai 2022 — Jul 2023</div>
             <h3 class="timeline-role">Assistente de TI</h3>
             <div class="timeline-company">Instituto Conecthus · Manaus, AM · Terceirizado</div>
             <p class="timeline-desc">Suporte técnico N1/N2, suporte aos sistemas MES e SINERGI com identificação e resolução de falhas, e manutenção preventiva de equipamentos de informática.</p>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">nov 2022 — jun 2023</div>
+            <div class="timeline-date">Nov 2022 — Jun 2023</div>
             <h3 class="timeline-role">Técnico de Suporte em TI</h3>
             <div class="timeline-company">CRTR 19ª Região · Manaus, AM · Híbrido</div>
             <p class="timeline-desc">Manutenção preventiva de estações e impressoras, suporte remoto a usuários home office e gerenciamento de servidor Windows Server com foco em disponibilidade e segurança.</p>
           </div>
           <div class="timeline-item">
-            <div class="timeline-date">ago 2019 — mai 2022</div>
+            <div class="timeline-date">Ago 2019 — Mai 2022</div>
             <h3 class="timeline-role">Assistente de TI</h3>
             <div class="timeline-company">Callidus · Manaus, AM · Presencial</div>
             <p class="timeline-desc">Suporte técnico aos usuários, manutenção de equipamentos e sistemas, colaboração em melhorias de processos internos e suporte operacional contínuo.</p>
@@ -1482,10 +1704,12 @@
         <div class="section-head reveal">
           <span class="mono-label">05 / Contato</span>
           <h2 id="contato-title">Vamos trabalhar juntos?</h2>
-          <p class="lead">Aberto a freelas, posições full-time e conversas sobre tecnologia. Resposta em até 24h.</p>
+          <p class="lead">Aberto a freelas, posições full-time e conversas sobre tecnologia.</p>
         </div>
-        <div class="contact-links-only reveal reveal-delay-1">
-          <div class="contact-links">
+        <div class="contact-grid reveal reveal-delay-1">
+          <div>
+            <h3 class="contact-aside-title">Canais diretos</h3>
+            <div class="contact-links">
             <a href="https://github.com/HyperTechDevelopment" class="contact-link" target="_blank" rel="noopener noreferrer">
               <div class="contact-link-left">
                 <div class="contact-link-icon" aria-hidden="true">
@@ -1528,6 +1752,26 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M17 7H7M17 7V17"/></svg>
               </span>
             </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="contact-aside-title">Ou envie uma mensagem</h3>
+            <form id="contactForm" class="contact-form">
+              <div class="contact-field">
+                <label for="cf-name">Nome</label>
+                <input type="text" id="cf-name" name="name" autocomplete="name" placeholder="Seu nome" required>
+              </div>
+              <div class="contact-field">
+                <label for="cf-email">E-mail</label>
+                <input type="email" id="cf-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+              </div>
+              <div class="contact-field">
+                <label for="cf-message">Mensagem</label>
+                <textarea id="cf-message" name="message" placeholder="Conte sobre o projeto, a vaga ou o assunto…" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+              <p class="contact-form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </div>
@@ -1536,7 +1780,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer-text">© 2026 Marcos Gabriel · Desenvolvedor Python</div>
+      <div class="footer-text">© 2026 Marcos Gabriel · Desenvolvedor Full Stack</div>
       <div class="footer-social">
         <a href="https://github.com/HyperTechDevelopment" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -1553,6 +1797,10 @@
       </div>
     </div>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
 
   <script>
     (function () {
@@ -1643,43 +1891,50 @@
         });
       }
 
-      // ── Hover sound (Resident Evil style menu tick) ──
-      var audioCtx = null;
-      function getAudioCtx() {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      // ── Back to top ──
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        function onScroll() {
+          backToTop.classList.toggle('visible', window.pageYOffset > 600);
         }
-        return audioCtx;
-      }
-      function playHoverTick() {
-        try {
-          var ctx = getAudioCtx();
-          if (ctx.state === 'suspended') ctx.resume();
-          var osc = ctx.createOscillator();
-          var gain = ctx.createGain();
-          osc.type = 'square';
-          osc.frequency.setValueAtTime(1200, ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.05);
-          gain.gain.setValueAtTime(0.13, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.055);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(ctx.currentTime);
-          osc.stop(ctx.currentTime + 0.06);
-        } catch (e) {}
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+        });
       }
 
-      // Create AudioContext on first user interaction (browser policy)
-      document.addEventListener('click', function () { getAudioCtx(); }, { once: true });
-      document.addEventListener('touchstart', function () { getAudioCtx(); }, { once: true });
+      // ── Scroll-spy: destaca o link ativo da navegação ──
+      var spySections = document.querySelectorAll('main section[id]');
+      var spyLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+      if (spySections.length && spyLinks.length) {
+        function onSpyScroll() {
+          var pos = window.pageYOffset + 120;
+          var currentId = null;
+          spySections.forEach(function (sec) {
+            if (pos >= sec.offsetTop) currentId = sec.id;
+          });
+          spyLinks.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
+          });
+        }
+        window.addEventListener('scroll', onSpyScroll, { passive: true });
+        onSpyScroll();
+      }
 
-      // Attach hover sound to all interactive elements
-      if (!prefersReduced) {
-        var soundTargets = document.querySelectorAll(
-          '.nav-links a, .btn, .project-card, .project-link, .contact-link, .footer-social-link'
-        );
-        soundTargets.forEach(function (el) {
-          el.addEventListener('mouseenter', playHoverTick);
+      // ── Formulário de contato (mailto, sem backend) ──
+      var contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        var formStatus = document.getElementById('formStatus');
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = document.getElementById('cf-name').value.trim();
+          var email = document.getElementById('cf-email').value.trim();
+          var message = document.getElementById('cf-message').value.trim();
+          var subject = 'Contato via portfólio — ' + name;
+          var body = name + ' <' + email + '>' + '\n\n' + message;
+          if (formStatus) formStatus.textContent = 'Abrindo seu cliente de e-mail…';
+          window.location.href = 'mailto:marcosdeveloper.ti@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         });
       }
 
