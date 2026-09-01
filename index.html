@@ -1594,6 +1594,100 @@
         margin: 0;
       }
 
+      /* ── Contato: Cards (shadcn) + glow (Magic Card) + Shimmer Button ── */
+      #contato::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(720px, 90vw);
+        height: 320px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(74, 222, 128, 0.08),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .contact-card {
+        position: relative;
+        padding: var(--space-6);
+        border: 1px solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(255, 255, 255, 0.01) 100%
+        );
+      }
+      /* Magic Card glow nos links */
+      .contact-link {
+        overflow: hidden;
+      }
+      .contact-link::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          220px circle at var(--mx, 50%) var(--my, 50%),
+          rgba(74, 222, 128, 0.09),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity var(--motion-base) var(--ease-standard);
+        pointer-events: none;
+      }
+      .contact-link:hover::after {
+        opacity: 1;
+      }
+      .contact-link-icon {
+        border: 1px solid transparent;
+        transition:
+          color var(--motion-base) var(--ease-standard),
+          background var(--motion-base) var(--ease-standard),
+          border-color var(--motion-base) var(--ease-standard);
+      }
+      .contact-link:hover .contact-link-icon {
+        color: var(--accent);
+        background: rgba(74, 222, 128, 0.1);
+        border-color: rgba(74, 222, 128, 0.35);
+      }
+      /* Anel de foco verde nos campos */
+      .contact-field input:focus-visible,
+      .contact-field textarea:focus-visible {
+        outline: none;
+        border-color: rgba(74, 222, 128, 0.5);
+        background: rgba(74, 222, 128, 0.04);
+        box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+      }
+      /* Shimmer Button (Magic UI) */
+      .btn-shine {
+        overflow: hidden;
+      }
+      .btn-shine::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          100deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.45) 50%,
+          transparent 70%
+        );
+        transform: translateX(-120%);
+        transition: transform 0.7s var(--ease-soft);
+        pointer-events: none;
+      }
+      .btn-shine:hover::after {
+        transform: translateX(120%);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .btn-shine::after {
+          display: none;
+        }
+      }
+
       .footer {
         position: relative;
         padding: var(--space-12) 0 var(--space-16);
@@ -1941,6 +2035,9 @@
         .contact-link {
           padding: 14px var(--space-4);
           min-height: 56px;
+        }
+        .contact-card {
+          padding: var(--space-5) var(--space-4);
         }
         .contact-link-icon {
           width: 36px;
@@ -3282,7 +3379,7 @@ Desenvolvedor <span class="code-fn">Full Stack</span> com experiência em sistem
             </p>
           </div>
           <div class="contact-grid reveal reveal-delay-1">
-            <div>
+            <div class="contact-card">
               <h3 class="contact-aside-title">Canais diretos</h3>
               <div class="contact-links">
                 <a
@@ -3415,7 +3512,7 @@ Desenvolvedor <span class="code-fn">Full Stack</span> com experiência em sistem
                 </a>
               </div>
             </div>
-            <div>
+            <div class="contact-card">
               <h3 class="contact-aside-title">Ou envie uma mensagem</h3>
               <form id="contactForm" class="contact-form">
                 <div class="contact-field">
@@ -3449,7 +3546,7 @@ Desenvolvedor <span class="code-fn">Full Stack</span> com experiência em sistem
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary btn-shine">
                   Enviar mensagem
                 </button>
                 <p
@@ -3967,9 +4064,11 @@ Desenvolvedor <span class="code-fn">Full Stack</span> com experiência em sistem
           }
         }
 
-        // ── Magic Card: glow que segue o cursor nos stats do "Sobre mim" ──
+        // ── Magic Card: glow que segue o cursor (stats e links de contato) ──
         if (window.matchMedia("(hover: hover)").matches) {
-          document.querySelectorAll(".about-stat").forEach(function (stat) {
+          document
+            .querySelectorAll(".about-stat, .contact-link")
+            .forEach(function (stat) {
             stat.addEventListener("mousemove", function (e) {
               var rect = stat.getBoundingClientRect();
               stat.style.setProperty("--mx", e.clientX - rect.left + "px");
