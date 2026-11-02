@@ -1356,6 +1356,76 @@
         content: "";
       }
 
+      /* ---------- em desenvolvimento ---------- */
+      .stage {
+        margin-top: 0.15rem;
+        padding-left: 1.25ch;
+        border-left: 1px dotted var(--rule);
+        font-size: 0.8125rem;
+      }
+
+      .stage-label {
+        color: var(--muted);
+        font-size: 0.75rem;
+        text-transform: lowercase;
+      }
+
+      .stage-label::before {
+        content: "▸ ";
+        color: var(--accent);
+      }
+
+      .stage-list {
+        display: grid;
+        gap: 0.3rem;
+        margin: 0.4rem 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .stage-list li {
+        position: relative;
+        padding-left: 1.8ch;
+      }
+
+      .stage-list li::before {
+        content: "–";
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+      }
+
+      .stage-note {
+        margin-top: 0.5rem;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+
+      .project-card--playlist {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 24ch) minmax(0, 1fr);
+        gap: 0.55rem 2.5ch;
+        align-items: start;
+        padding-top: 1.25rem;
+        border-top: 1px dotted var(--rule);
+      }
+
+      .project-card--playlist > * {
+        grid-column: 2;
+      }
+
+      .project-card--playlist > .project-image {
+        grid-column: 1;
+        grid-row: 1 / span 5;
+      }
+
+      .project-card--playlist:hover .project-image {
+        opacity: 1;
+      }
+
       /* ---------- experiência ---------- */
       .timeline {
         border-top: 1px dotted var(--rule);
@@ -1840,6 +1910,20 @@
           grid-row: auto;
         }
 
+        .project-card--playlist {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .project-card--playlist > * {
+          grid-column: auto;
+        }
+
+        .project-card--playlist > .project-image {
+          grid-row: auto;
+          max-width: 28ch;
+        }
+
         .timeline-item {
           grid-template-columns: minmax(0, 1fr);
           row-gap: 0.15rem;
@@ -2145,7 +2229,7 @@
 
         <nav aria-label="Seções do portfólio">
           <p class="side-group">
-            <span>seções</span><span class="side-count">05</span>
+            <span>seções</span><span class="side-count">06</span>
           </p>
           <ul class="nav-links">
             <li>
@@ -2158,10 +2242,13 @@
               <a href="#projetos"><span>projetos</span><span class="nav-count">03</span></a>
             </li>
             <li>
-              <a href="#experiencia"><span>experiência</span><span class="nav-count">04</span></a>
+              <a href="#agora"><span>em desenvolvimento</span><span class="nav-count">04</span></a>
             </li>
             <li>
-              <a href="#contato"><span>contato</span><span class="nav-count">05</span></a>
+              <a href="#experiencia"><span>experiência</span><span class="nav-count">05</span></a>
+            </li>
+            <li>
+              <a href="#contato"><span>contato</span><span class="nav-count">06</span></a>
             </li>
           </ul>
         </nav>
@@ -3354,6 +3441,237 @@ Trabalho com <span class="code-fn">web</span> (<span class="code-str">Flask</spa
       </section>
 
       <section
+        id="agora"
+        class="section-divider"
+        data-od-id="agora"
+        aria-labelledby="agora-title"
+      >
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="mono-label">04 / Em desenvolvimento</span>
+            <h2 id="agora-title">No que estou trabalhando agora.</h2>
+            <p class="lead">
+              Três projetos em andamento e a playlist que uso para estudar
+              desenvolvimento com IA. Cada card mostra a etapa em que o
+              projeto está hoje.
+            </p>
+          </div>
+          <div class="projects-grid reveal reveal-delay-1">
+            <article class="project-card">
+              <div class="project-num">
+                <span>01 · Desktop</span>
+                <span class="project-badge">pré-1.0</span>
+              </div>
+              <h3 class="project-name">DBLion</h3>
+              <p class="project-desc">
+                IDE de banco de dados em Electron, React e TypeScript. A IA
+                sugere o SQL, o plano de execução e o diagnóstico; a execução
+                fica com você. Está na 0.1.0.
+              </p>
+              <div class="stage" aria-label="Etapa atual do DBLion">
+                <span class="stage-label">etapa atual · nov 2026</span>
+                <ul class="stage-list">
+                  <li>
+                    Validação de conexão e diagnóstico de catálogo no Firebird
+                    (2.5 a 6), mostrando o erro em vez de falhar em silêncio.
+                  </li>
+                  <li>
+                    Tela para criar procedures e triggers, com o DDL revisável
+                    antes de executar.
+                  </li>
+                  <li>
+                    Testes de geração de SQL em PostgreSQL, SQL Server e
+                    Firebird, cobrindo mais casos.
+                  </li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">TypeScript</span>
+                <span class="project-tag">Electron</span>
+                <span class="project-tag">React</span>
+                <span class="project-tag project-tag-open">Open source</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/HyperTechDevelopment/DBLion"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver no GitHub
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 17 17 7M17 7H7M17 7V17" /></svg
+                ></a>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-num">
+                <span>02 · Suporte</span>
+                <span class="project-badge">em produção</span>
+              </div>
+              <h3 class="project-name">Helpdesk Juruá</h3>
+              <p class="project-desc">
+                Sistema interno de chamados do estaleiro, que desenvolvo e
+                mantenho no dia a dia. É o sistema de maior qualidade que já
+                fiz: roda em produção, com SLA, triagem por impacto e
+                histórico técnico por chamado.
+              </p>
+              <div class="stage" aria-label="Etapa atual do Helpdesk Juruá">
+                <span class="stage-label">etapa atual · nov 2026</span>
+                <ul class="stage-list">
+                  <li>Controle de saída de veículos.</li>
+                  <li>Modo escuro nas telas.</li>
+                  <li>Ajustes no chat interno.</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">SLA</span>
+                <span class="project-tag">Service Desk</span>
+                <span class="project-tag">Rastreabilidade</span>
+                <span class="project-tag project-tag-private">Privado</span>
+              </div>
+              <div class="project-links">
+                <span class="project-link project-link-consult"
+                  >Sistema corporativo
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 17 17 7M17 7H7M17 7V17" /></svg
+                ></span>
+              </div>
+            </article>
+            <article class="project-card">
+              <div class="project-num">
+                <span>03 · IA</span>
+                <span class="project-badge">evoluindo</span>
+              </div>
+              <h3 class="project-name">Pipeline for AI</h3>
+              <p class="project-desc">
+                Catálogo das skills que uso no trabalho e nos projetos
+                pessoais, dividido em quatro pipelines: implementação,
+                diagnóstico, interface e entrega. Cada estágio mostra a skill,
+                o comando e o critério para seguir adiante.
+              </p>
+              <div class="stage" aria-label="Etapa atual do Pipeline for AI">
+                <span class="stage-label">etapa atual · nov 2026</span>
+                <ul class="stage-list">
+                  <li>
+                    Deixar claro o que cada pipeline faz, para quem está
+                    começando e para quem já usa skills todo dia.
+                  </li>
+                  <li>Mostrar quando usar cada estágio, com exemplos de comando.</li>
+                </ul>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">HTML</span>
+                <span class="project-tag">Skills</span>
+                <span class="project-tag project-tag-open">Open source</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://hypertechdevelopment.github.io/Pipeline-for-AI/"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Acessar site
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 17 17 7M17 7H7M17 7V17" /></svg
+                ></a>
+                <a
+                  href="https://github.com/HyperTechDevelopment/Pipeline-for-AI"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Ver no GitHub
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 17 17 7M17 7H7M17 7V17" /></svg
+                ></a>
+              </div>
+            </article>
+            <article class="project-card project-card--playlist">
+              <img
+                src="demos/playlist-desenvolvimento-com-ia.jpg"
+                alt="Capa da playlist Desenvolvimento com IA no YouTube"
+                class="project-image"
+                loading="lazy"
+              />
+              <div class="project-num">
+                <span>04 · Curiosidades</span>
+                <span class="project-badge">playlist</span>
+              </div>
+              <h3 class="project-name">Desenvolvimento com IA</h3>
+              <p class="project-desc">
+                Playlist que monto para estudar desenvolvimento com IA:
+                ferramentas, agentes e casos de uso. São dezenas de vídeos de
+                canais diferentes, que uso para testar ideia nova antes de
+                levar para o trabalho.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Agentes de IA</span>
+                <span class="project-tag">Skills</span>
+                <span class="project-tag">MCP</span>
+                <span class="project-tag">YouTube</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://www.youtube.com/playlist?list=PLZYA7NuMpVTY"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Assistir playlist
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M7 17 17 7M17 7H7M17 7V17" /></svg
+                ></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
         id="experiencia"
         class="section-divider"
         data-od-id="experiencia"
@@ -3361,7 +3679,7 @@ Trabalho com <span class="code-fn">web</span> (<span class="code-str">Flask</spa
       >
         <div class="container">
           <div class="section-head reveal">
-            <span class="mono-label">04 / Experiência</span>
+            <span class="mono-label">05 / Experiência</span>
             <h2 id="experiencia-title">Onde eu trabalhei.</h2>
             <p class="lead">De 2019 até agora, sempre em TI.</p>
           </div>
@@ -3457,7 +3775,7 @@ Trabalho com <span class="code-fn">web</span> (<span class="code-str">Flask</spa
       >
         <div class="container">
           <div class="section-head reveal">
-            <span class="mono-label">05 / Contato</span>
+            <span class="mono-label">06 / Contato</span>
             <h2 id="contato-title">Me chama.</h2>
             <p class="lead">
               Aberto a freela, vaga full-time e conversa sobre código. Se for
@@ -3792,14 +4110,16 @@ Trabalho com <span class="code-fn">web</span> (<span class="code-str">Flask</spa
           para agentes de ia &middot; pipeline for ai &middot; catálogo de skills
           &middot; makeyourposter &middot; gerador de pôsteres &middot; my dev
           clock &middot; relógio de terminal &middot; helpdesk juruá &middot;
-          sistema de chamados &middot; aberto a freela e vaga full-time &middot;
+          sistema de chamados &middot; desenvolvimento com ia &middot; playlist
+          de estudos &middot; aberto a freela e vaga full-time &middot;
         </span>
         <span class="ticker-run">
           / dblion &middot; ide de banco de dados &middot; sol-mode &middot; skill
           para agentes de ia &middot; pipeline for ai &middot; catálogo de skills
           &middot; makeyourposter &middot; gerador de pôsteres &middot; my dev
           clock &middot; relógio de terminal &middot; helpdesk juruá &middot;
-          sistema de chamados &middot; aberto a freela e vaga full-time &middot;
+          sistema de chamados &middot; desenvolvimento com ia &middot; playlist
+          de estudos &middot; aberto a freela e vaga full-time &middot;
         </span>
       </div>
     </div>
